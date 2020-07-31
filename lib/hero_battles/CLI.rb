@@ -75,14 +75,18 @@ class HeroBattles::CLI
     def make_enemy_user
         print "What hero would you like to battle?"
         input = gets.chomp
-        hero = @api.get_hero_by_name(input)
-        if hero !="No hero like that exists"
-            @enemyhero = hero
-            heroname = @enemyhero.name
-            puts "You have chosen #{@enemyhero.name}."
-        else
-            puts hero.colorize(:red)
-        end
+            hero = @api.get_hero_by_name(input)
+            if input.downcase == @userhero.name.downcase
+                puts "You can't fight yourself"
+                @enemyhero = nil
+                make_enemy_user
+            elsif hero !="No hero like that exists"
+                @enemyhero = hero
+                heroname = @enemyhero.name
+                puts "You have chosen #{@enemyhero.name}."
+            else
+                puts hero.colorize(:red)
+            end
     end
 
     def learn_about_user
@@ -92,11 +96,11 @@ class HeroBattles::CLI
           puts "You must pick a hero first"
         end
     end
-    #fix the else part of this
+
     def menu_for_battle
       if @userhero != nil
         make_enemy_user
-        if @enemyhero != "No hero like that exists"
+        if (@enemyhero != "No hero like that exists") 
             puts "\n"
             puts "Are you ready to battle?"
             puts "Yes"
@@ -110,9 +114,9 @@ class HeroBattles::CLI
                 puts "I didn't understand that."
             end
           end
-        else
-          puts "\n"
-          puts "You need to pick a hero".colorize(:red)
+        else 
+            puts "\n"
+          puts "You need to pick a hero first".colorize(:red)
         end
     end
 
@@ -140,7 +144,6 @@ class HeroBattles::CLI
             @enemyheropoints += 1
         elsif @enemyhero.send(attribute).to_i < @userhero.send(attribute).to_i
             @userheropoints += 1
-
         end
     end
 

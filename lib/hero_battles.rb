@@ -3,7 +3,3 @@ require_relative "./hero_battles/CLI"
 require_relative "./hero_battles/Hero"
 require_relative "./hero_battles/APIService"
 
-module HeroBattles
-  class Error < StandardError; end
-  # Your code goes here...
-end

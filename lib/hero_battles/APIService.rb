@@ -1,4 +1,5 @@
 class APIService
+    #Check Chett announcements for hiding your key from pushes
     BASE_URI = "https://www.superheroapi.com/api.php/2727069054248160/search/"
 
     def get_hero_by_name(name)
@@ -9,15 +10,15 @@ class APIService
         uri = URI(BASE_URI + "#{namestring}")
         heroes = make_request(uri)
         heroresults = heroes["results"]
-
-        if heroresults !=nil
+        if heroresults!= nil
+            @hero1 = Hero.new(heroresults[0])
             heroresults.each do|result|
-             name1 =  result["name"].to_s
-            if name1.downcase == name.downcase
-             @hero1 = Hero.new(result)
+            name1 =  result["name"].to_s
+                if name1.downcase == name.downcase
+                 @hero1 = Hero.new(result)
+                end
             end
-        end
-            @hero1
+                 @hero1
         else
             "No hero like that exists"
         end
