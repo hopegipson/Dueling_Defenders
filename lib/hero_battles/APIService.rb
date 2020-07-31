@@ -1,6 +1,8 @@
 class APIService
-    #Check Chett announcements for hiding your key from pushes
-    BASE_URI = "https://www.superheroapi.com/api.php/2727069054248160/search/"
+    #Hiding my own key to API in environmental variable
+    key = ENV['API_KEY']
+
+    BASE_URI = "https://www.superheroapi.com/api.php/#{key}/search/"
 
     def get_hero_by_name(name)
         # to make it possible to search heroes that have two word names, ie Green Arrow
