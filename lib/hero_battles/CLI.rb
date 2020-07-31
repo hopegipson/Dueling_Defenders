@@ -12,11 +12,15 @@ class HeroBattles::CLI
         until @user_input == "5"
           main_menu
         end
-        puts "Goodbye!"
+        goodbye
       end
 
     def welcome
         puts "Welcome to the Superhero Battleground".colorize(:blue)
+    end
+
+    def goodbye
+        puts "Goodbye, go save the world!"
     end
 
     def main_menu
@@ -77,7 +81,7 @@ class HeroBattles::CLI
         input = gets.chomp
             hero = @api.get_hero_by_name(input)
             if input.downcase == @userhero.name.downcase
-                puts "You can't fight yourself"
+                puts "You can't fight yourself".colorize(:red)
                 @enemyhero = nil
                 make_enemy_user
             elsif hero !="No hero like that exists"
@@ -106,10 +110,10 @@ class HeroBattles::CLI
             puts "Yes"
              puts "No"
             input2 = gets.chomp
-            if input2 == "Yes"
+            if input2.downcase == "yes"
                 battle
-            elsif input2 == "No"
-                puts "Coward."
+            elsif input2.downcase == "no"
+                puts "Coward.".colorize(:red)
             else 
                 puts "I didn't understand that."
             end
@@ -131,9 +135,9 @@ class HeroBattles::CLI
         test_attribute(:combat)
 
         if @enemyheropoints > @userheropoints
-            puts "#{@enemyhero.name} has won!".colorize(:red)
+            puts "#{@enemyhero.name} has defeated you!".colorize(:red)
         elsif @userheropoints > @enemyheropoints
-            puts "#{@userhero.name} has saved the day!".colorize(:blue)
+            puts "#{@userhero.name} has won the battle! Hooray!".colorize(:blue)
         elsif @userheropoints == @enemyheropoints
            puts "Our heroes are evenly matched...maybe they should fight together, not each other...".colorize(:green)
         end
@@ -144,7 +148,7 @@ class HeroBattles::CLI
             @enemyheropoints += 1
         elsif @enemyhero.send(attribute).to_i < @userhero.send(attribute).to_i
             @userheropoints += 1
-        end
+        end 
     end
 
 end

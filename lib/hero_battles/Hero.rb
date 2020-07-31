@@ -1,17 +1,14 @@
 class Hero
-    #what if a character has nil intelligence?
-    attr_reader :name, :intelligence, :strength, :speed, :durability, :power, :combat
+    attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat
     @@all = []
     
     def initialize(hero_data)
         @name = hero_data["name"]
-        #do this for all attributes
-        #if hero_data["powerstats"]["intelligence"] != nil
-        #@intelligence = hero_data["powerstats"]["intelligence"]
-        #else
-         #   @intelligence = 0
+        @fullname = hero_data["biography"]["full-name"]
+        @alteregos = hero_data["biography"]["alter-egos"]
+        @aliases = hero_data["biography"]["aliases"]
         @intelligence = hero_data["powerstats"]["intelligence"]
-        @strength = hero_data["powerstats"]["strength"]
+        @strength = hero_data["powerstats"]["strength"] 
         @speed = hero_data["powerstats"]["speed"]
         @durability = hero_data["powerstats"]["durability"]
         @power = hero_data["powerstats"]["power"]
@@ -32,6 +29,15 @@ class Hero
     def printnicely
         puts @name 
         puts "\n"
+        puts "Real Name:"
+        puts @fullname
+        puts "\n"
+        puts "Alter-Egos:"
+        puts @alteregos
+        puts "\n"
+        puts "Aliases:"
+        puts @aliases
+        puts "\n"
         puts "Stats:"
         puts "Intelligence: #{@intelligence}"
         puts "Strength: #{@strength}"
@@ -40,6 +46,7 @@ class Hero
         puts "Power: #{@power}"
         puts "Combat #{@combat}"
         puts "\n"
-        end
-    
     end
+
+    end
+

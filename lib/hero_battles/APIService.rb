@@ -3,7 +3,7 @@ class APIService
     BASE_URI = "https://www.superheroapi.com/api.php/2727069054248160/search/"
 
     def get_hero_by_name(name)
-        #need to make it possible to search heroes that have two word names
+        # to make it possible to search heroes that have two word names, ie Green Arrow
         namestring =name.gsub(" ", "_")
 
 
@@ -11,8 +11,9 @@ class APIService
         heroes = make_request(uri)
         heroresults = heroes["results"]
         if heroresults!= nil
+            #a default value of the first index if there is no exact match, if there is an exact match, we want to use the first exact match. ie Superman, not Cyborg Superman
             @hero1 = Hero.new(heroresults[0])
-            heroresults.each do|result|
+            heroresults.find do|result|
             name1 =  result["name"].to_s
                 if name1.downcase == name.downcase
                  @hero1 = Hero.new(result)
