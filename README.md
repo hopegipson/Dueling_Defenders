@@ -27,11 +27,11 @@ An API key is required to use this application, and is to be stored in an enviro
 
 https://www.superheroapi.com/ Access this website and sign up for an API key/access-token, this key is free as of this release.
 
-After you have your key, 
+After you have your key, type these lines into your terminal to assign the environmental variable. Replace 'value' with your key number. Ex, export API_KEY=12345.
 
-                            "API_KEY"=whateveryoukeyis ruby -e 'p ENV["API_KEY"]'
+                            export API_KEY=value
 
-                            export API_KEY
+                            ruby -e 'p ENV["API_KEY"]'
                             
 Important your environmental variable API_KEY must be named the same as referenced in line 3 of APIService class.
 
