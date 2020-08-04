@@ -1,8 +1,8 @@
 # HeroBattles
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hero_battles`. To experiment with that code, run `bin/console` for an interactive prompt.
+This CLI accesses data from https://www.superheroapi.com/ and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attrivutes. The user can decide between 4 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat.
 
-TODO: Delete this and the text above, and describe your gem
+To watch a demo of the CLI in action you can visit here.
 
 ## Installation
 
