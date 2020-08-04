@@ -1,6 +1,6 @@
 # HeroBattles
 
-This CLI accesses data from https://www.superheroapi.com/ and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attrivutes. The user can decide between 4 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat.
+This CLI accesses data from https://www.superheroapi.com/ and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attributes. The user can decide between 4 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat.
 
 To watch a demo of the CLI in action you can visit here.
 
@@ -22,11 +22,18 @@ Or install it yourself as:
 
 ## Usage
 Use bin/hero_battles to execute.
+
 An API key is required to use this application, and is to be stored in an environmental variable before usage.
+
 https://www.superheroapi.com/ Access this website and sign up for an API key/access-token, this key is free as of this release.
-After you have your key, "API_KEY"=whateveryoukeyis ruby -e 'p ENV["API_KEY"]'
+
+After you have your key, 
+
+                            "API_KEY"=whateveryoukeyis ruby -e 'p ENV["API_KEY"]'
+
                             export API_KEY
-Important your environmental variable API_KEY named the same as referenced in line 3 of APIService class.
+                            
+Important your environmental variable API_KEY must be named the same as referenced in line 3 of APIService class.
 
 
 
