@@ -3,6 +3,7 @@ class APIService
     key = ENV['API_KEY']
 
     BASE_URI = "https://www.superheroapi.com/api.php/#{key}/search/"
+    #BASE_URI = "https://www.superheroapi.com/api.php/2727069054248160/search/"
 
     def get_hero_by_name(name)
         # to make it possible to search heroes that have two word names, ie Green Arrow

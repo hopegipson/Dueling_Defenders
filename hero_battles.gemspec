@@ -6,16 +6,16 @@ Gem::Specification.new do |spec|
   spec.authors       = ["hopegipson"]
   spec.email         = ["gipson.hope@gmail.com"]
 
-  spec.summary       = %q{Write a short summary that is required}
-  #spec.description   = %q{TODO: Write a longer description or delete this line.}
-  #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A gem that allows the user to battle and learn about superheroes}
+  spec.description   = %q{This CLI accesses data from https://www.superheroapi.com/ and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attributes. The user can decide between 4 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat.}
+  spec.homepage      = "https://github.com/hopegipson/hero_battles"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   #spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
-  #spec.metadata["homepage_uri"] = spec.homepage
-  #spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/hopegipson/hero_battles"
   #spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.

@@ -54,8 +54,8 @@ class HeroBattles::CLI
 
     def search_for_hero
         print "What hero would you like to search for? "
-        input = gets.chomp
-        hero = @api.get_hero_by_name(input)
+        @user_input = gets.chomp
+        hero = @api.get_hero_by_name(@user_input)
         if hero != "No hero like that exists"
         hero.printnicely
         else
@@ -65,12 +65,12 @@ class HeroBattles::CLI
 
     def make_hero_user
         print "What hero would you like to become?"
-        input = gets.chomp
-        hero = @api.get_hero_by_name(input)
+        @user_input = gets.chomp
+        hero = @api.get_hero_by_name(@user_input)
         if hero !="No hero like that exists"
             @userhero = hero
             heroname = @userhero.name
-            puts "Your hero is now #{heroname}"
+            puts "Your hero is now #{heroname}".colorize(:blue)
         else
             puts hero.colorize(:red)
         end
@@ -78,18 +78,19 @@ class HeroBattles::CLI
 
     def make_enemy_user
         print "What hero would you like to battle?"
-        input = gets.chomp
-            hero = @api.get_hero_by_name(input)
-            if input.downcase == @userhero.name.downcase
+        @user_input = gets.chomp
+            hero = @api.get_hero_by_name(@user_input)
+            if @user_input.downcase == @userhero.name.downcase
                 puts "You can't fight yourself".colorize(:red)
                 @enemyhero = nil
                 make_enemy_user
             elsif hero !="No hero like that exists"
                 @enemyhero = hero
                 heroname = @enemyhero.name
-                puts "You have chosen #{@enemyhero.name}."
+                puts "You have chosen #{@enemyhero.name}.".colorize(:green)
             else
                 puts hero.colorize(:red)
+                make_enemy_user
             end
     end
 
@@ -102,22 +103,9 @@ class HeroBattles::CLI
     end
 
     def menu_for_battle
-      if @userhero != nil
-        make_enemy_user
-        if (@enemyhero != "No hero like that exists") 
-            puts "\n"
-            puts "Are you ready to battle?"
-            puts "Yes"
-             puts "No"
-            input2 = gets.chomp
-            if input2.downcase == "yes"
-                battle
-            elsif input2.downcase == "no"
-                puts "Coward.".colorize(:red)
-            else 
-                puts "I didn't understand that."
-            end
-          end
+        if @userhero != nil
+             make_enemy_user
+             sureaboutbattle
         else 
             puts "\n"
           puts "You need to pick a hero first".colorize(:red)
@@ -135,13 +123,31 @@ class HeroBattles::CLI
         test_attribute(:combat)
 
         if @enemyheropoints > @userheropoints
-            puts "#{@enemyhero.name} has defeated you!".colorize(:red)
+            puts "#{@enemyhero.name} has defeated you!".colorize(:green)
         elsif @userheropoints > @enemyheropoints
             puts "#{@userhero.name} has won the battle! Hooray!".colorize(:blue)
         elsif @userheropoints == @enemyheropoints
-           puts "Our heroes are evenly matched...maybe they should fight together, not each other...".colorize(:green)
+           puts "Our heroes are evenly matched...maybe they should fight together, not each other...".colorize(:purple)
         end
     end
+
+        def sureaboutbattle
+            puts "\n"
+            puts "Are you ready to battle?"
+            puts "Yes"
+            puts "No"
+            @user_input = gets.chomp
+            input = @user_input.downcase
+            case input
+            when "yes"
+                battle
+            when "no"
+                puts "Coward.".colorize(:red)
+            else 
+                puts "I didn't understand that.".colorize(:red)
+                sureaboutbattle
+            end
+        end
    
     def test_attribute(attribute)   
         if @enemyhero.send(attribute).to_i > @userhero.send(attribute).to_i

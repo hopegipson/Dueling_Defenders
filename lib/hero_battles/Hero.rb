@@ -2,6 +2,7 @@ class Hero
     attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat
     @@all = []
     
+    
     def initialize(hero_data)
         @name = hero_data["name"]
         @fullname = hero_data["biography"]["full-name"]
@@ -12,8 +13,7 @@ class Hero
         @speed = hero_data["powerstats"]["speed"]
         @durability = hero_data["powerstats"]["durability"]
         @power = hero_data["powerstats"]["power"]
-        @combat = hero_data["powerstats"]["combat"]
-    
+        @combat = hero_data["powerstats"]["combat"]    
         @@all << self
     end
     
@@ -27,7 +27,7 @@ class Hero
     
     
     def printnicely
-        puts @name 
+        puts @name.colorize(:blue)
         puts "\n"
         puts "Real Name:"
         puts @fullname
