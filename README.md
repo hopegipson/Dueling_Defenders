@@ -21,8 +21,14 @@ Or install it yourself as:
     $ gem install hero_battles
 
 ## Usage
+Use bin/hero_battles to execute.
+An API key is required to use this application, and is to be stored in an environmental variable before usage.
+https://www.superheroapi.com/ Access this website and sign up for an API key/access-token, this key is free as of this release.
+After you have your key, "API_KEY"=whateveryoukeyis ruby -e 'p ENV["API_KEY"]'
+                            export API_KEY
+Important your environmental variable API_KEY named the same as referenced in line 3 of APIService class.
 
-TODO: Write usage instructions here
+
 
 ## Development
 
