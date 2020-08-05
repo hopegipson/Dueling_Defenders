@@ -16,6 +16,18 @@ class HeroBattles::CLI
 
     def welcome
         puts "Welcome to the Superhero Battleground".colorize(:blue)
+      puts "
+         ________________             
+       //.,------------,\\\\            
+      //  .=^^^^^^^^^^\__|\\\\           
+      \\\\   `--------.   .//           
+       \\\\--........_  `;//            
+         \\\\.-,______;.//              
+           \\\\---..--//                
+             \\\\    //                 
+               \\\\//                   
+
+".colorize(:color => :red, :background => :blue)           
     end
 
     def goodbye
@@ -66,7 +78,7 @@ class HeroBattles::CLI
         puts  "Has won #{hero.battleswon} battle(s)."
         puts  "Has lost #{hero.battleslost} battle(s)."
         end
-    end
+         end
     end
 
 
@@ -74,14 +86,14 @@ class HeroBattles::CLI
         print "What hero would you like to search for? "
         @user_input = gets.chomp
         hero = Hero.find_or_create_by_name(@user_input)
-        heroexists?(hero) || hero.printnicely
+        noheroexists?(hero) || hero.printnicely
     end
 
     def make_hero_user
         print "What hero would you like to become?"
         @user_input = gets.chomp
         hero = Hero.find_or_create_by_name(@user_input)
-        heroexists?(hero) || (@userhero = hero 
+        noheroexists?(hero) || (@userhero = hero 
         puts "\n"
         puts "Your hero is now #{hero.name}".colorize(:blue))
     end
@@ -99,18 +111,18 @@ class HeroBattles::CLI
             make_enemy_user
         else   
             hero = Hero.find_or_create_by_name(@user_input)
-            heroexists?(hero) || (@enemyhero = hero
+            noheroexists?(hero) || (@enemyhero = hero
             puts "\n"
             puts "You have chosen #{@enemyhero.name} to fight.".colorize(:red))
         end
     end
 
     def learn_about_user
-        userhero? || @userhero.printnicely
+        nouserhero? || @userhero.printnicely
     end
 
     def battle
-        userhero? || make_enemy_user
+        nouserhero? || make_enemy_user
        if @enemyhero!=nil 
         sureaboutbattle
        end
@@ -171,7 +183,7 @@ class HeroBattles::CLI
         end 
     end
 
-    def heroexists?(hero)
+    def noheroexists?(hero)
         if hero == "No hero like that exists"
             puts "\n"
             puts hero.colorize(:red)
@@ -181,7 +193,7 @@ class HeroBattles::CLI
         end
     end
 
-    def userhero?
+    def nouserhero?
         if @userhero == nil
             puts "\n"
             puts "You need to pick a hero first, change user hero".colorize(:red)

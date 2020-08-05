@@ -31,5 +31,5 @@ class APIService
             @hero1 = Hero.new(arrayname[0])
         end
     end
-    
+
 end
