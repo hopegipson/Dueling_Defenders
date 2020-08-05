@@ -1,5 +1,5 @@
 class Hero
-    attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat
+    attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat, :battleswon, :battleslost
     @@all = []
     
     
@@ -13,7 +13,9 @@ class Hero
         @speed = hero_data["powerstats"]["speed"]
         @durability = hero_data["powerstats"]["durability"]
         @power = hero_data["powerstats"]["power"]
-        @combat = hero_data["powerstats"]["combat"]    
+        @combat = hero_data["powerstats"]["combat"]
+        @battleswon = 0
+        @battleslost = 0
         @@all << self
     end
     
@@ -22,11 +24,27 @@ class Hero
     end
     
     def self.find_by_name(name)
-        @@all.find { |hero| hero.name.downcase == name.downcase }
+        self.all.detect { |hero| hero.name.downcase == name.downcase }
       end
-    
+
+    def self.create(name)
+        APIService.new.get_hero_by_name(name)
+     end
+
+    def self.find_or_create_by_name(name)
+        find_by_name(name) || create(name)
+    end
+
+    def winabattle
+        @battleswon += 1
+    end
+
+    def loseabattle
+        @battleslost += 1
+    end
     
     def printnicely
+        puts "\n"
         puts @name.colorize(:blue)
         puts "\n"
         puts "Real Name:"

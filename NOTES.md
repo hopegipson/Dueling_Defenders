@@ -25,7 +25,7 @@ Hello! Welcome to the Superhero Battle Simulator
             - if hero ins't valid prints can't find hero with name - main menu
     - What is my current hero for battle? (learn about user hero)
         - prints hero facts/data user currently is
-        - if no hero assigned tells you to pick one
+        - tells you if hero is unassigned
     - Battle a different hero
         -  What hero do you want to battle (name)?
             - You have chosen ____ battle now?
@@ -35,3 +35,6 @@ Hello! Welcome to the Superhero Battle Simulator
                 - No
                     - "Coward" Main menu
             -  Or you must a pick a user hero first - main menu
+    - How many battles has each hero in battleground won/lost
+        -prints list of heros and wins/losses
+        -prints no heroes in battleground yet

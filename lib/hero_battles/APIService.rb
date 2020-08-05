@@ -1,28 +1,17 @@
 class APIService
-    #Hiding my own key to API in environmental variable
+    #user should use terminal to assign API_KEY environmental variable before running. Details in README.
     key = ENV['API_KEY']
 
     BASE_URI = "https://www.superheroapi.com/api.php/#{key}/search/"
-    #BASE_URI = "https://www.superheroapi.com/api.php/2727069054248160/search/"
 
     def get_hero_by_name(name)
-        # to make it possible to search heroes that have two word names, ie Green Arrow
-        namestring =name.gsub(" ", "_")
-
-
-        uri = URI(BASE_URI + "#{namestring}")
+        @namestring =name.gsub(" ", "_")
+        uri = URI(BASE_URI + "#{@namestring}")
         heroes = make_request(uri)
         heroresults = heroes["results"]
         if heroresults!= nil
-            #a default value of the first index if there is no exact match, if there is an exact match, we want to use the first exact match. ie Superman, not Cyborg Superman
-            @hero1 = Hero.new(heroresults[0])
-            heroresults.find do|result|
-            name1 =  result["name"].to_s
-                if name1.downcase == name.downcase
-                 @hero1 = Hero.new(result)
-                end
-            end
-                 @hero1
+            lookforexactmatchinresults(heroresults)
+            @hero1
         else
             "No hero like that exists"
         end
@@ -33,4 +22,14 @@ class APIService
         response = Net::HTTP.get_response(uri)
         JSON.parse(response.body)
       end
+
+    def lookforexactmatchinresults(arrayname)
+        foundhero = arrayname.detect {|result| result["name"].to_s.downcase == @namestring.downcase}
+        if foundhero!= nil
+            @hero1 = Hero.new(foundhero)
+        else
+            @hero1 = Hero.new(arrayname[0])
+        end
+    end
+    
 end
