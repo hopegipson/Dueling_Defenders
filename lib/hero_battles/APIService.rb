@@ -9,6 +9,7 @@ class APIService
         uri = URI(BASE_URI + "#{@namestring}")
         heroes = make_request(uri)
         heroresults = heroes["results"]
+        
         if heroresults!= nil
             lookforexactmatchinresults(heroresults)
             @hero1

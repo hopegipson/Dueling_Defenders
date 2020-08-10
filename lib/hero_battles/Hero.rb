@@ -1,7 +1,6 @@
 class Hero
     attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat, :battleswon, :battleslost
-    @@all = []
-    
+    @@all = []    
     
     def initialize(hero_data)
         @name = hero_data["name"]
@@ -66,5 +65,5 @@ class Hero
         puts "\n"
     end
 
-    end
+end
 

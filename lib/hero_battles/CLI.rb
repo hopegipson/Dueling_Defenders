@@ -1,5 +1,5 @@
 #CLI Controller responsible for user interactions
-class HeroBattles::CLI
+class CLI
 
     def run
         system("clear")
@@ -13,10 +13,9 @@ class HeroBattles::CLI
         end
       end
     
-
     def welcome
         puts "Welcome to the Superhero Battleground".colorize(:blue)
-      puts "
+        puts "
          ________________             
        //.,------------,\\\\            
       //  .=^^^^^^^^^^\__|\\\\           
@@ -25,9 +24,7 @@ class HeroBattles::CLI
          \\\\.-,______;.//              
            \\\\---..--//                
              \\\\    //                 
-               \\\\//                   
-
-".colorize(:color => :red, :background => :blue)           
+               \\\\//                   ".colorize(:color => :red, :background => :blue)   
     end
 
     def goodbye
@@ -67,58 +64,44 @@ class HeroBattles::CLI
         end
     end
 
-    def battlecount
-        if Hero.all == []
-            puts "\n"
-            puts "No heroes in battleground yet. Search for heroes to add them to battleground, or become one.".colorize(:red)
-        else
-        Hero.all.each do |hero|
-        puts "\n"
-        puts "#{hero.name}:".colorize(:blue)
-        puts  "Has won #{hero.battleswon} battle(s)."
-        puts  "Has lost #{hero.battleslost} battle(s)."
-        end
-         end
-    end
-
-
     def search_for_hero
         print "What hero would you like to search for? "
-        @user_input = gets.chomp
-        hero = Hero.find_or_create_by_name(@user_input)
+        heroinput = gets.chomp
+        hero = Hero.find_or_create_by_name(heroinput)
         noheroexists?(hero) || hero.printnicely
+    end
+
+    def noheroexists?(hero)
+        if hero == "No hero like that exists"
+            puts "\n"
+            puts hero.colorize(:red)
+            return true
+        else
+            return false
+        end
     end
 
     def make_hero_user
         print "What hero would you like to become?"
-        @user_input = gets.chomp
-        hero = Hero.find_or_create_by_name(@user_input)
+        herotobecome = gets.chomp
+        hero = Hero.find_or_create_by_name(herotobecome)
         noheroexists?(hero) || (@userhero = hero 
         puts "\n"
         puts "Your hero is now #{hero.name}".colorize(:blue))
     end
 
-    
-
-    def make_enemy_user
-        @enemyhero = nil
-        puts "\n"
-        print "What hero would you like to battle?"
-        @user_input = gets.chomp
-        if @user_input.downcase == @userhero.name.downcase
-            puts "\n"
-            puts "You can't fight yourself".colorize(:red)
-            make_enemy_user
-        else   
-            hero = Hero.find_or_create_by_name(@user_input)
-            noheroexists?(hero) || (@enemyhero = hero
-            puts "\n"
-            puts "You have chosen #{@enemyhero.name} to fight.".colorize(:red))
-        end
-    end
-
     def learn_about_user
         nouserhero? || @userhero.printnicely
+    end
+
+    def nouserhero?
+        if @userhero == nil
+            puts "\n"
+            puts "You need to pick a hero first, change user hero".colorize(:red)
+            return true
+        else
+            return false
+        end
     end
 
     def battle
@@ -127,14 +110,54 @@ class HeroBattles::CLI
         sureaboutbattle
        end
     end
+    
+    def make_enemy_user
+        @enemyhero = nil
+        puts "\n"
+        print "What hero would you like to battle?"
+        enemyinput = gets.chomp
+        if enemyinput.downcase == @userhero.name.downcase
+            puts "\n"
+            puts "You can't fight yourself.".colorize(:red)
+            make_enemy_user
+        else   
+            hero = Hero.find_or_create_by_name(enemyinput)
+            noheroexists?(hero) || (@enemyhero = hero
+            puts "\n"
+            puts "You have chosen #{@enemyhero.name} to fight.".colorize(:red))
+        end
+    end
+
+    def sureaboutbattle
+        puts "\n"
+        puts "Are you ready to battle #{@enemyhero.name}?"
+        puts "Yes"
+        puts "No"
+
+        sureaboutbattleinput = gets.chomp
+        input = sureaboutbattleinput.downcase
+
+        case input
+        when "yes"
+            testusers
+        when "no"
+            puts "\n"
+            puts "Coward.".colorize(:red)
+        else 
+            puts "I didn't understand that.".colorize(:red)
+            sureaboutbattle
+        end
+    end
 
     def testusers
         puts "\n"
         puts "The heroes are fighting...."
         sleep(2)
         puts "\n"
+
         @enemyheropoints = 0
         @userheropoints = 0
+
         test_attribute(:intelligence)
         test_attribute(:strength)
         test_attribute(:speed)
@@ -155,25 +178,6 @@ class HeroBattles::CLI
            puts "Our heroes are evenly matched...maybe they should fight together, not each other...".colorize(:blue)
         end
     end
-
-    def sureaboutbattle
-        puts "\n"
-        puts "Are you ready to battle #{@enemyhero.name}?"
-        puts "Yes"
-        puts "No"
-        @user_input = gets.chomp
-        input = @user_input.downcase
-        case input
-        when "yes"
-            testusers
-        when "no"
-            puts "\n"
-            puts "Coward.".colorize(:red)
-        else 
-            puts "I didn't understand that.".colorize(:red)
-            sureaboutbattle
-        end
-    end
    
     def test_attribute(attribute)   
         if @enemyhero.send(attribute).to_i > @userhero.send(attribute).to_i
@@ -183,21 +187,17 @@ class HeroBattles::CLI
         end 
     end
 
-    def noheroexists?(hero)
-        if hero == "No hero like that exists"
+    def battlecount
+        if Hero.all == []
             puts "\n"
-            puts hero.colorize(:red)
-            return true
+            puts "No heroes in battleground yet. Search for heroes to add them to battleground, or become one.".colorize(:red)
         else
-            return false
-        end
-    end
-
-    def nouserhero?
-        if @userhero == nil
+            Hero.all.each do |hero|
             puts "\n"
-            puts "You need to pick a hero first, change user hero".colorize(:red)
-            return true
+            puts "#{hero.name}:".colorize(:blue)
+            puts  "Has won #{hero.battleswon} battle(s)."
+            puts  "Has lost #{hero.battleslost} battle(s)."
+            end
         end
     end
 
