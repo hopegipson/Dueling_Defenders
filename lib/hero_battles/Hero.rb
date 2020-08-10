@@ -24,11 +24,11 @@ class Hero
     
     def self.find_by_name(name)
         self.all.detect { |hero| hero.name.downcase == name.downcase }
-      end
+    end
 
     def self.create(name)
         APIService.new.get_hero_by_name(name)
-     end
+    end
 
     def self.find_or_create_by_name(name)
         find_by_name(name) || create(name)

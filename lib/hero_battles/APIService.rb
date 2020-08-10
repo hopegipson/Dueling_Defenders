@@ -22,14 +22,18 @@ class APIService
     def make_request(uri)
         response = Net::HTTP.get_response(uri)
         JSON.parse(response.body)
-      end
+    end
 
     def lookforexactmatchinresults(arrayname)
         foundhero = arrayname.detect {|result| result["name"].to_s.downcase == @namestring.downcase}
         if foundhero!= nil
             @hero1 = Hero.new(foundhero)
         else
-            @hero1 = Hero.new(arrayname[0])
+            if Hero.find_by_name(arrayname[0]["name"]) !=nil
+                @hero1 = Hero.find_by_name(arrayname[0]["name"])
+            else
+                @hero1 = Hero.new(arrayname[0])
+            end
         end
     end
 

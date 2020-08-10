@@ -1,4 +1,3 @@
-#CLI Controller responsible for user interactions
 class CLI
 
     def run
@@ -116,16 +115,16 @@ class CLI
         puts "\n"
         print "What hero would you like to battle?"
         enemyinput = gets.chomp
-        if enemyinput.downcase == @userhero.name.downcase
-            puts "\n"
-            puts "You can't fight yourself.".colorize(:red)
-            make_enemy_user
-        else   
             hero = Hero.find_or_create_by_name(enemyinput)
             noheroexists?(hero) || (@enemyhero = hero
-            puts "\n"
-            puts "You have chosen #{@enemyhero.name} to fight.".colorize(:red))
-        end
+            if @enemyhero.name.downcase == @userhero.name.downcase
+                puts "\n"
+                puts "You can't fight yourself.".colorize(:red)
+                make_enemy_user
+            else
+                puts "\n"
+                puts "You have chosen #{@enemyhero.name} to fight.".colorize(:red)
+        end)
     end
 
     def sureaboutbattle
