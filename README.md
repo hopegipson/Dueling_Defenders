@@ -3,6 +3,7 @@
 This CLI accesses data from <a href="https://www.superheroapi.com/" /> this API </a> and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attributes. The user can decide between 5 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat. The fifth option allows the user to see a list of Superhero characters in the battleground, and how many wins and losses they have accumulated.
 
 To watch a demo of the CLI:
+
 <a href="https://youtu.be/oVP5I1QeQQ0
 " target="_blank"><img src="http://img.youtube.com/vi/oVP5I1QeQQ0/0.jpg" 
 alt="Demo of Spotify app" width="240" height="180" border="10" /></a>
@@ -52,7 +53,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub <a href="https://github.com/hopegipson/hero_battles"/> here.</a> This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github username>/hero_battles/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub <a href="https://github.com/hopegipson/hero_battles"/> here.</a> This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/hopegipson/hero_battles/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
@@ -61,4 +62,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the HeroBattles project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/<github username>/hero_battles/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the HeroBattles project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/hopegipson/hero_battles/blob/master/CODE_OF_CONDUCT.md).
