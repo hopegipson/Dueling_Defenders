@@ -3,6 +3,16 @@
 
 # Dueling Defenders
 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hopegipson/Dueling_Defenders) 
+![GitHub language count](https://img.shields.io/github/languages/count/hopegipson/Dueling_Defenders) 
+![GitHub top language](https://img.shields.io/github/languages/top/hopegipson/Dueling_Defenders)
+![GitHub contributors](https://img.shields.io/github/contributors/hopegipson/Dueling_Defenders)
+![GitHub issues](https://img.shields.io/github/issues-raw/hopegipson/Dueling_Defenders)
+![GitHub last commit](https://img.shields.io/github/last-commit/hopegipson/Dueling_Defenders)
+![GitHub forks](https://img.shields.io/github/forks/hopegipson/Dueling_Defenders?style=social)
+![GitHub Repo stars](https://img.shields.io/github/stars/hopegipson/Dueling_Defenders?style=social) 
+![YouTube Video Views](https://img.shields.io/youtube/views/oVP5I1QeQQ0?style=social)
+
 This CLI accesses data from <a href="https://www.superheroapi.com/" /> this API </a> and allows users to learn more about superheroes, while also battling superheroes and deciding the victor based on key attributes. The user can decide between 5 options (and exit). The first option is learning more about a superhero, that the user will then input. The second option is assigning a superhero to the user, so that the user may battle as this superhero. The third option allows the user to learn about the superhero they are currently playing as at any time. The fourth option allows the user to battle. In battle, the user selects another superhero to try to defeat. The user can then choose if they are ready or not to battle. After the battle, the victor will be displayed based on who had better attributes in six categories: intelligence, strength, speed, durability, power, and combat. The fifth option allows the user to see a list of Superhero characters in the battleground, and how many wins and losses they have accumulated.
 
 To watch a demo of the CLI:
