@@ -2,7 +2,7 @@ require_relative 'lib/Dueling_Defenders/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "Dueling_Defenders"
-  spec.version       = '0.1.0'
+  spec.version       = DuelingDefenders::VERSION
   spec.authors       = ["hopegipson"]
   spec.email         = ["gipson.hope@gmail.com"]
 
