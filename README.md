@@ -47,17 +47,7 @@ Use bin/Dueling_Defenders to execute.
 
 An API key is required to use this application, and is to be stored in an environmental variable before usage.
 
- Access <a href="https://www.superheroapi.com/" /> this API </a>  and sign up for a key/access-token, this key is free as of this release.
-
-After you have your key, type these lines into your terminal to assign the environmental variable. Replace 'value' with your key number. Ex, export API_KEY=12345.
-
-                            export API_KEY=value
-
-                            ruby -e 'p ENV["API_KEY"]'
-                            
-Important your environmental variable API_KEY must be named the same as referenced in line 3 of APIService class.
-
-
+ Access <a href="https://www.superheroapi.com/" /> this API </a>  and sign up for a key/access-token, this key is free as of this release.  Create a .env file and API_KEY=YOUR_API_KEY_HERE replace YOUR_API_KEY_HERE with the API key you retrieve from the superhero API.
 
 ## Development
 

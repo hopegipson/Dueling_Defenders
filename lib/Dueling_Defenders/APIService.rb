@@ -1,5 +1,4 @@
 class APIService
-    #user should use terminal to assign API_KEY environmental variable before running. Details in README.
     key = ENV['API_KEY']
 
     BASE_URI = "https://www.superheroapi.com/api.php/#{key}/search/"
