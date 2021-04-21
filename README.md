@@ -31,7 +31,7 @@ Blog Post with Further Explanation on CLI build:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'hero_battles'
+gem 'Dueling_Defenders'
 ```
 
 And then execute:
@@ -40,10 +40,10 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install hero_battles
+    $ gem install Dueling_Defenders
 
 ## Usage
-Use bin/hero_battles to execute.
+Use bin/Dueling_Defenders to execute.
 
 An API key is required to use this application, and is to be stored in an environmental variable before usage.
 
