@@ -23,7 +23,7 @@ To watch a demo of the CLI:
 alt="Demo of Spotify app" width="240" height="180" border="10" /></a>
 
 Blog Post with Further Explanation on CLI build:
-<a href="https://hopegipson.github.io/superhero_battle_simulator_cli"/> Here</a>
+<a href="https://thehopegipson.medium.com/dueling-defenders-making-your-own-superhero-battle-cli-tutorial-5850681c1fd9"/> Here</a>
 
 
 ## Installation
