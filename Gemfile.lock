@@ -3,6 +3,7 @@ PATH
   specs:
     Dueling_Defenders (0.1.0)
       colorize
+      dotenv
 
 GEM
   remote: https://rubygems.org/
@@ -36,8 +37,7 @@ PLATFORMS
 DEPENDENCIES
   Dueling_Defenders!
   bundler (~> 2.1.4)
-  dotenv
-  pry (~> 0.13.1)
+  pry
   rake (>= 12.3.3)
   rspec
 

@@ -1,8 +1,9 @@
 class Hero
-    attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat, :battleswon, :battleslost
+    attr_reader :name, :alteregos, :aliases, :fullname, :intelligence, :strength, :speed, :durability, :power, :combat, :battleswon, :battleslost, :attributes
     @@all = []    
     
     def initialize(hero_data)
+        @attributes = []
         @name = hero_data["name"]
         @fullname = hero_data["biography"]["full-name"]
         @alteregos = hero_data["biography"]["alter-egos"]
@@ -15,12 +16,14 @@ class Hero
         @combat = hero_data["powerstats"]["combat"]
         @battleswon = 0
         @battleslost = 0
+        @attributes.push(@intelligence, @strength, @speed, @durability, @power, @combat)
         @@all << self
     end
     
     def self.all
         @@all
     end
+
     
     def self.find_by_name(name)
         self.all.detect { |hero| hero.name.downcase == name.downcase }

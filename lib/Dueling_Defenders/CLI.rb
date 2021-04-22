@@ -157,12 +157,7 @@ class CLI
         @enemyheropoints = 0
         @userheropoints = 0
 
-        test_attribute(:intelligence)
-        test_attribute(:strength)
-        test_attribute(:speed)
-        test_attribute(:durability)
-        test_attribute(:power)
-        test_attribute(:combat)
+        test_attributes
 
         if @enemyheropoints > @userheropoints
             puts "#{@enemyhero.name} has defeated you!".colorize(:red)
@@ -178,12 +173,14 @@ class CLI
         end
     end
    
-    def test_attribute(attribute)   
-        if @enemyhero.send(attribute).to_i > @userhero.send(attribute).to_i
-            @enemyheropoints += 1
-        elsif @enemyhero.send(attribute).to_i < @userhero.send(attribute).to_i
-            @userheropoints += 1
-        end 
+    def test_attributes 
+        @userhero.attributes.each_index do |i|
+          if @enemyhero.attributes[i].to_i > @userhero.attributes[i].to_i;
+              @enemyheropoints += 1;
+          elsif @enemyhero.attributes[i].to_i < @userhero.attributes[i].to_i;
+              @userheropoints += 1
+              end 
+        end
     end
 
     def battlecount

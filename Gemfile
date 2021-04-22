@@ -7,7 +7,5 @@ require "colorize"
 require "uri"
 require "net/http"
 require "json"
-
-gem "pry", "~> 0.13.1"
-gem 'dotenv'
-require 'dotenv/load'
+require 'dotenv'
+Dotenv.load
